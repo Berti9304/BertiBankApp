@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">BertiBank</string>
+    <string name="email_hint">E-mail</string>
+    <string name="pwd_hint">Password</string>
+    <string name="login_button">Submit</string>
+    <string name="login_text">Login</string>
+    <string name="balance">Balance</string>
+    <string name="currency">USD</string>
+    <string name="transaction">Transactions</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="login_error">Incorrect E-mail or password.</string>
+
+
+    <string name="action_settings">Profile</string>
+    <string name="send_money">Send Money</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="account_number">Account Number</string>
+    <string name="user_country">Country</string>
+    <string name="user_city">City</string>
+    <string name="postalcode">Postalcode</string>
+    <string name="streetname">Street Name</string>
+    <string name="streetnumber">Street Number</string>
+    <string name="profile_settings">Profile Settings</string>
+    <string name="amount">Amount</string>
+    <string name="send">Send</string>
+
+
+</resources>
