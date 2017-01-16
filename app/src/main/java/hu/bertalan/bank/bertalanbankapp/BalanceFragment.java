@@ -11,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Berti on 2017. 01. 14..
  */
@@ -19,6 +22,11 @@ public class BalanceFragment extends Fragment {
 
     private static final String USER_KEY = "logged";
     private User loggedInUser;
+    @BindView(R.id.name) TextView displayName;
+    @BindView(R.id.accountNumber) TextView displayAccountNumber;
+    @BindView(R.id.amount) TextView displayBalance;
+
+
 
     public static BalanceFragment newInstance(User user)
     {
@@ -35,16 +43,16 @@ public class BalanceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.balance_layout, container, false);
         loggedInUser = (User)getArguments().getParcelable(USER_KEY);
-        TextView displayName = (TextView)v.findViewById(R.id.name);
-        displayName.setText(loggedInUser.getFirstName() + " " + loggedInUser.getLastName());
-        TextView displayAccountNumber = (TextView)v.findViewById(R.id.accountNumber);
-        TextView displayBalance = (TextView)v.findViewById(R.id.amount);
-        displayBalance.setText(String.valueOf(loggedInUser.getBalance()));
-        displayAccountNumber.setText(loggedInUser.getAccountNumber());
-
-
+        ButterKnife.bind(this,v);
         return v;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        displayName.setText(loggedInUser.getFirstName() + " " + loggedInUser.getLastName());
+        displayBalance.setText(String.valueOf(loggedInUser.getBalance()));
+        displayAccountNumber.setText(loggedInUser.getAccountNumber());
 
+    }
 }

@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Berti on 2017. 01. 15..
  */
@@ -16,8 +19,8 @@ import android.widget.EditText;
 public class SendMoneyFragment extends Fragment {
 
 
-    EditText reciever;
-    EditText amount;
+    @BindView(R.id.recieverNumber) EditText reciever;
+    @BindView(R.id.amountToSend) EditText amount;
 
 
     User loggedInUser;
@@ -25,8 +28,7 @@ public class SendMoneyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.sendmoney, container,false);
-        reciever = (EditText)v.findViewById(R.id.recieverNumber);
-        amount = (EditText)v.findViewById(R.id.amountToSend);
+        ButterKnife.bind(this,v);
         return v;
     }
 

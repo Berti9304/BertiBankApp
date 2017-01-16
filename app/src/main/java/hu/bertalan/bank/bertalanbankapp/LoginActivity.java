@@ -9,14 +9,21 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+
 public class LoginActivity extends AppCompatActivity {
 
     public Data dataBase = new Data();
+    @BindView(R.id.emailLogin)  EditText email;
+    @BindView(R.id.passwordLogin) EditText password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
 
 
 
@@ -24,8 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
     protected void submitOnClick(View v){
 
-        EditText email = (EditText)findViewById(R.id.emailLogin);
-        EditText password = (EditText)findViewById(R.id.passwordLogin);
+
         String emailString = email.getText().toString();
         String passwordString = password.getText().toString();
         User loggedUser = null;

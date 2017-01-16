@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Berti on 2017. 01. 15..
  */
@@ -20,6 +23,7 @@ public class TransactionsFragment extends Fragment {
 
     Data data;
     List<Transaction> transactionList;
+    @BindView(R.id.rvTransactions)RecyclerView rc;
 
     public static TransactionsFragment newInstance(Data data)
     {
@@ -34,12 +38,19 @@ public class TransactionsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.transactions,container,false);
-        RecyclerView rc = (RecyclerView)v.findViewById(R.id.rvTransactions);
+        ButterKnife.bind(this,v);
+
+        return v;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         data = (Data)getArguments().getParcelable("dataBase");
         transactionList = data.transactionList;
         TransactionsAdapter adapter = new TransactionsAdapter(this.getContext(),transactionList);
         rc.setAdapter(adapter);
         rc.setLayoutManager(new LinearLayoutManager(getContext()));
-        return v;
+
     }
 }

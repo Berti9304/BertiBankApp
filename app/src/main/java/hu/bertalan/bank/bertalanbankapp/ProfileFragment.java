@@ -13,20 +13,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ProfileFragment extends Fragment {
 
 
     User loggedInUser;
-    Button saveButton;
-    EditText firstName ;
-    EditText lastName;
-    EditText accountNumber;
-    EditText country ;
-    EditText city;
-    EditText postalCode;
-    EditText streetName;
-    EditText streetNumber;
-    EditText email;
+   @BindView(R.id.ps_saveButton) Button saveButton;
+   @BindView(R.id.ps_firstName) EditText firstName ;
+    @BindView(R.id.ps_lastName) EditText lastName;
+    @BindView(R.id.ps_accountNumber) EditText accountNumber;
+    @BindView(R.id.ps_country) EditText country ;
+    @BindView(R.id.ps_city) EditText city;
+    @BindView(R.id.ps_postalCode) EditText postalCode;
+    @BindView(R.id.ps_streetName) EditText streetName;
+    @BindView(R.id.ps_streetNumber) EditText streetNumber;
+    @BindView(R.id.ps_email) EditText email;
 
 
     public static ProfileFragment newInstance(User user)
@@ -46,16 +49,13 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         loggedInUser = (User)getArguments().getParcelable("logged");
         View v = inflater.inflate(R.layout.profile_fragment,container,false);
-         firstName = (EditText)v.findViewById(R.id.ps_firstName);
-         lastName = (EditText)v.findViewById(R.id.ps_lastName);
-         accountNumber = (EditText)v.findViewById(R.id.ps_accountNumber);
-         country = (EditText)v.findViewById(R.id.ps_country);
-         city = (EditText)v.findViewById(R.id.ps_city);
-         postalCode = (EditText)v.findViewById(R.id.ps_postalCode);
-         streetName = (EditText)v.findViewById(R.id.ps_streetName);
-         email = (EditText)v.findViewById(R.id.ps_email);
-        streetNumber = (EditText)v.findViewById(R.id.ps_streetNumber);
-        saveButton=(Button)v.findViewById(R.id.ps_saveButton);
+        ButterKnife.bind(this,v);
+        return v;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         firstName.setText(loggedInUser.getFirstName());
         lastName.setText(loggedInUser.getLastName());
         accountNumber.setText(loggedInUser.getAccountNumber());
@@ -65,7 +65,7 @@ public class ProfileFragment extends Fragment {
         streetName.setText(loggedInUser.getStreet());
         streetNumber.setText(loggedInUser.getStreetNumber());
         email.setText(loggedInUser.getEmail());
-        return v;
+
     }
 
     public User savingTheUser()
