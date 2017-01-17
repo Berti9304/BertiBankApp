@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity{
         FragmentManager fragmentManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer, balanceFragment);
+        fragmentTransaction.addToBackStack(null);
         NavigationView nav = (NavigationView)findViewById(R.id.nav);
         fragmentTransaction.commit();
         final DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layoutreal);
@@ -137,6 +138,8 @@ public class MainActivity extends AppCompatActivity{
         FragmentManager fm = getSupportFragmentManager();
         ProfileFragment pf = (ProfileFragment)fm.findFragmentByTag("profileSettingsFragment");
         loggedInUser = pf.savingTheUser();
+        data.syncUserToDatabase(loggedInUser);
+        data.syncFromDatabase();
         switchToBalanceFragment();
 
 
@@ -158,6 +161,8 @@ public class MainActivity extends AppCompatActivity{
              data.userList.get(i).setBalance(data.userList.get(i).getBalance() + Long.parseLong(amount));
                transactionSucces = true;
                data.transactionList.add(new Transaction(loggedInUser,data.userList.get(i),Long.parseLong(amount)));
+               data.syncUserToDatabase(loggedInUser);
+               data.syncUserToDatabase(data.userList.get(i));
            }
        }
        if(transactionSucces == false)
