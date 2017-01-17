@@ -86,7 +86,8 @@ public class Data implements Parcelable {
 
     public void syncFromDatabase() {
 
-        final ArrayList<User> tempList = new ArrayList<User>();
+        final ArrayList<User> userTempList = new ArrayList<User>();
+        final ArrayList<Transaction> transactionTempList = new ArrayList<Transaction>();
         Runnable r = new Runnable() {   // Get all users
             @Override
             public void run() {
@@ -100,7 +101,33 @@ public class Data implements Parcelable {
 
                     while (rs.next()) {
                         User temp = new User(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getLong(11));
-                        tempList.add(temp);
+                        userTempList.add(temp);
+                    }
+
+
+                    rs = st.executeQuery("select * from transactions");
+
+
+                    while (rs.next()) {
+                        User reciever = null;
+                        User sender = null;
+                        for(int i=0;i<userTempList.size();i++)
+                        {
+                            if(rs.getString(1).equals(userTempList.get(i).getAccountNumber()))
+                            {
+                                reciever = userTempList.get(i);
+                            }
+                            else if(rs.getString(2).equals(userTempList.get(i).getAccountNumber()))
+                            {
+                                sender = userTempList.get(i);
+                            }
+                        }
+                        if(reciever != null && sender != null)
+                        {
+                            Transaction tempTrans = new Transaction(sender,reciever,rs.getLong(3));
+                            transactionTempList.add(tempTrans);
+                        }
+
                     }
 
 
@@ -117,7 +144,8 @@ public class Data implements Parcelable {
         Thread thread = new Thread(r);
         thread.start();
 
-        this.userList = tempList;
+        this.userList = userTempList;
+        this.transactionList = transactionTempList;
 
 
     }
@@ -158,6 +186,36 @@ public class Data implements Parcelable {
         Thread thread = new Thread(r);
         thread.start();
 
+
+    }
+
+    public void addTransactionToDatabase(final Transaction trans){
+        Runnable r = new Runnable() {   // update
+            @Override
+            public void run() {
+
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection(url,user,pass);
+                    Statement st = con.createStatement();
+                    String query = "INSERT INTO transactions (sender,reciever,amount) VALUES ('" + trans.getSender().getAccountNumber() +"','" + trans.getReciever().getAccountNumber() + "','" + trans.getAmount() + "')"  ;
+                    st.executeUpdate(query);
+
+
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+
+        };
+
+        Thread thread = new Thread(r);
+        thread.start();
 
     }
 }

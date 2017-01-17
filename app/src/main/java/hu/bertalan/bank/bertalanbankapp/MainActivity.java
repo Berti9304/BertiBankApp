@@ -161,6 +161,7 @@ public class MainActivity extends AppCompatActivity{
              data.userList.get(i).setBalance(data.userList.get(i).getBalance() + Long.parseLong(amount));
                transactionSucces = true;
                data.transactionList.add(new Transaction(loggedInUser,data.userList.get(i),Long.parseLong(amount)));
+               data.addTransactionToDatabase(new Transaction(loggedInUser,data.userList.get(i),Long.parseLong(amount)));
                data.syncUserToDatabase(loggedInUser);
                data.syncUserToDatabase(data.userList.get(i));
            }

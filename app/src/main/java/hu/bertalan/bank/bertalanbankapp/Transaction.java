@@ -14,6 +14,8 @@ public class Transaction implements Parcelable{
     private long amount;
 
 
+
+
     public Transaction(User sender, User reciever, long amount) {
         this.sender = sender;
         this.reciever = reciever;
