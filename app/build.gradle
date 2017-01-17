@@ -28,6 +28,7 @@ dependencies {
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.jakewharton:butterknife:8.4.0'
+    compile files("app/libs/mysql-connector-java-3.0.17-ga-bin.jar")
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     testCompile 'junit:junit:4.12'
 }

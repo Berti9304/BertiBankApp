@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 
 public class User implements Parcelable {
-    private static final AtomicInteger count= new AtomicInteger(0);
+
     private String firstName;
     private String lastName;
     private String email;
@@ -20,11 +20,9 @@ public class User implements Parcelable {
     private String city;
     private String postalCode;
     private String street;
-    private int id;
 
-    public int getId(){
-        return this.id;
-    }
+
+
 
     public String getCity() {
         return city;
@@ -62,8 +60,8 @@ public class User implements Parcelable {
         this.accountNumber = accountNumber;
     }
 
-    public User(String firstName, String email, String lastName, String password, String postalCode, String street, String streetNumber, String accountNumber, long balance,String city, String country) {
-        this.id = count.incrementAndGet();
+    public User(String accountNumber,String firstName, String lastName,String email,  String password,  String country, String city, String postalCode, String street, String streetNumber,  long balance) {
+
         this.firstName = firstName;
         this.email = email;
         this.lastName = lastName;

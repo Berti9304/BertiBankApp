@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
 
+
 public class MainActivity extends AppCompatActivity{
 
     User loggedInUser;
