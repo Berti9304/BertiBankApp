@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/fragmentBlue"
+    android:fadingEdge="horizontal|vertical"
+    app:layout_insetEdge="bottom">
+
 
 
     <TextView
@@ -15,7 +20,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="25dp"
         android:id="@+id/sender"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:textColor="@color/white" />
 
     <TextView
         android:text="-"
@@ -26,7 +32,8 @@
         android:id="@+id/textView9"
         android:layout_alignBottom="@+id/sender"
         android:layout_toRightOf="@+id/sender"
-        android:layout_toEndOf="@+id/sender" />
+        android:layout_toEndOf="@+id/sender"
+        android:textColor="@color/white" />
 
     <TextView
         android:text="TextView"
@@ -39,7 +46,9 @@
         android:layout_alignBaseline="@+id/textView9"
         android:layout_alignBottom="@+id/textView9"
         android:layout_toRightOf="@+id/textView9"
-        android:layout_toEndOf="@+id/textView9" />
+        android:layout_toEndOf="@+id/textView9"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
 
     <TextView
         android:text="@string/amount"
@@ -49,7 +58,9 @@
         android:layout_alignLeft="@+id/sender"
         android:layout_alignStart="@+id/sender"
         android:layout_marginTop="10dp"
-        android:id="@+id/textView11" />
+        android:id="@+id/textView11"
+        android:paddingBottom="10dp"
+        android:textColor="@color/white" />
 
     <TextView
         android:text="TextView"
@@ -58,5 +69,6 @@
         android:layout_alignTop="@+id/textView11"
         android:layout_alignLeft="@+id/textView9"
         android:layout_alignStart="@+id/textView9"
-        android:id="@+id/transactionAmount" />
+        android:id="@+id/transactionAmount"
+        android:textColor="@android:color/holo_red_light" />
 </RelativeLayout>

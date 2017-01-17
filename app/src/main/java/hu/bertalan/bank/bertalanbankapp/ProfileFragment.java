@@ -23,7 +23,7 @@ public class ProfileFragment extends Fragment {
    @BindView(R.id.ps_saveButton) Button saveButton;
    @BindView(R.id.ps_firstName) EditText firstName ;
     @BindView(R.id.ps_lastName) EditText lastName;
-    @BindView(R.id.ps_accountNumber) EditText accountNumber;
+
     @BindView(R.id.ps_country) EditText country ;
     @BindView(R.id.ps_city) EditText city;
     @BindView(R.id.ps_postalCode) EditText postalCode;
@@ -58,7 +58,7 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         firstName.setText(loggedInUser.getFirstName());
         lastName.setText(loggedInUser.getLastName());
-        accountNumber.setText(loggedInUser.getAccountNumber());
+
         country.setText(loggedInUser.getCountry());
         city.setText(loggedInUser.getCity());
         postalCode.setText(loggedInUser.getPostalCode());
@@ -72,7 +72,7 @@ public class ProfileFragment extends Fragment {
     {
         loggedInUser.setFirstName(String.valueOf(firstName.getText()));
         loggedInUser.setLastName(String.valueOf(lastName.getText()));
-        loggedInUser.setAccountNumber(String.valueOf(accountNumber.getText()));
+
         loggedInUser.setCountry(String.valueOf(country.getText()));
         loggedInUser.setCity(String.valueOf(city.getText()));
         loggedInUser.setPostalCode(String.valueOf(postalCode.getText()));

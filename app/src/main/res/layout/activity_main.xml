@@ -7,7 +7,7 @@
     android:layout_height="fill_parent"
     android:fitsSystemWindows="false"
     android:clickable="true"
-    >
+    android:background="@color/backgroundBlue">
 
 
 
@@ -22,19 +22,22 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="hu.bertalan.bank.bertalanbankapp.MainActivity"
-    android:clickable="true">
+    android:clickable="true"
+        android:gravity="center_horizontal">
 
 
 
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:clickable="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentBottom="false"
+        android:background="@color/fragmentBlue"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="false"
+        android:foregroundGravity="center_vertical|center_horizontal">
     </FrameLayout>
 
 
@@ -48,6 +51,7 @@
         android:layout_height="fill_parent"
         android:layout_gravity="start"
         app:menu="@menu/navigation_menu"
-        />
+        android:background="@color/appbarBlue"
+        app:itemTextColor="@color/white" />
 
 </android.support.v4.widget.DrawerLayout>

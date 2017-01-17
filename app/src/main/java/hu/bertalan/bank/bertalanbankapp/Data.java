@@ -21,7 +21,7 @@ public class Data implements Parcelable {
 
     public List<User> userList  = new ArrayList<User>();
     public List<Transaction> transactionList = new ArrayList<Transaction>();
-    private static final String url = "jdbc:mysql://192.168.1.78:3306/berti_bank_database";
+    private static final String url = "jdbc:mysql://192.168.1.116:3306/berti_bank_database";
     private static final String user="basic_user";
     private static final String pass="basicpass";
 
@@ -115,11 +115,11 @@ public class Data implements Parcelable {
                         {
                             if(rs.getString(1).equals(userTempList.get(i).getAccountNumber()))
                             {
-                                reciever = userTempList.get(i);
+                                sender = userTempList.get(i);
                             }
                             else if(rs.getString(2).equals(userTempList.get(i).getAccountNumber()))
                             {
-                                sender = userTempList.get(i);
+                                reciever = userTempList.get(i);
                             }
                         }
                         if(reciever != null && sender != null)

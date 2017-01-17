@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp" android:layout_height="match_parent"
+    android:background="@color/fragmentBlue">
 
     <TextView
         android:text="@string/send_money"
@@ -8,52 +10,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="102dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/textView"
         android:textAppearance="@android:style/TextAppearance.Material.Large" />
-
-    <TextView
-        android:text="@string/account_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_toLeftOf="@+id/textView"
-        android:layout_toStartOf="@+id/textView"
-        android:layout_marginTop="45dp"
-        android:id="@+id/textView2" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:layout_below="@+id/textView"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_marginTop="34dp"
-        android:id="@+id/recieverNumber"
-        android:width="100dp" />
-
-    <TextView
-        android:text="@string/amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/recieverNumber"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_marginTop="35dp"
-        android:id="@+id/textView4" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_alignLeft="@+id/recieverNumber"
-        android:layout_alignStart="@+id/recieverNumber"
-        android:id="@+id/amountToSend"
-        android:width="100dp" />
 
     <Button
         android:text="@string/send"
@@ -64,4 +23,49 @@
         android:layout_marginTop="24dp"
         android:layout_below="@+id/amountToSend"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_marginTop="33dp"
+        android:id="@+id/recieverNumber"
+        android:width="100dp"
+        android:layout_below="@+id/textView"
+        android:layout_toRightOf="@+id/sendMoneyButton"
+        android:layout_toEndOf="@+id/sendMoneyButton" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/amountToSend"
+        android:width="100dp"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignLeft="@+id/recieverNumber"
+        android:layout_alignStart="@+id/recieverNumber" />
+
+    <TextView
+        android:text="@string/amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/recieverNumber"
+        android:layout_toLeftOf="@+id/textView"
+        android:layout_toStartOf="@+id/textView"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <TextView
+        android:text="@string/account_number"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_alignBaseline="@+id/recieverNumber"
+        android:layout_alignBottom="@+id/recieverNumber"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4" />
 </RelativeLayout>
